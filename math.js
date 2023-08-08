@@ -110,6 +110,7 @@ console.log({
 })
 
 function calcularAlturaTrianguloEscaleno(lado1, lado2, base) {
+  const semiperimetro = (lado1 + lado2 + base2) / 2
   const altura =
     (2 / base) *
     Math.sqrt(
