@@ -3,23 +3,26 @@ const inputDiscount = document.querySelector("#discount")
 const paragraph = document.querySelector(".paragraph")
 const calculateBtn = document.querySelector(".calculateBtn")
 
-calculateBtn.addEventListener("click", calculate)
-inputDiscount.addEventListener("onBlur", validateDiscount)
+calculateBtn.addEventListener("click", calculateTheDiscountedPrice)
+inputDiscount.addEventListener("onBlur", discountIsWithinTheRange)
 
-function calculate() {
-  if (
-    validateDiscount(inputDiscount.value) &&
-    inputHasAValue(inputPrice.value, inputDiscount.value)
-  ) {
-    const price = inputPrice.value
-    const discount = inputDiscount.value
-    const result = (price * (100 - discount)) / 100
-    paragraph.innerText = "Precio con descuento: " + result
+const MIN_PERCENTAGE_DISCOUNT = 0
+const MAX_PERCENTAGE_DISCOUNT = 100
+
+function calculateTheDiscountedPrice() {
+  const discount = inputDiscount.value
+  const price = inputPrice.value
+  if (discountIsWithinTheRange(discount) && inputHasAValue(price, discount)) {
+    const priceWithDiscountApplied = (price * (100 - discount)) / 100
+    paragraph.innerText = "Precio con descuento: " + priceWithDiscountApplied
   }
 }
 
-function validateDiscount(value) {
-  if (value < 0 || value > 100) {
+function discountIsWithinTheRange(discount) {
+  if (
+    discount < MIN_PERCENTAGE_DISCOUNT ||
+    discount > MAX_PERCENTAGE_DISCOUNT
+  ) {
     paragraph.innerText = "El descuento debe ser entre 0% y 100%"
     return false
   }
