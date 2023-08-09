@@ -71,15 +71,18 @@ couponBtn2.addEventListener("click", applyDiscountCoupon)
 function applyDiscountCoupon() {
   const price2 = inputPrice2.value
   const coupon2 = inputCoupon2.value
-  if (extractDiscountCoupon2() && inputHasAValue2(price2, coupon2)) {
-    const discount2 = extractDiscount2
-    calculateTheDiscountedPrice2(price2, discount2)
-    // console.log(extractDiscountCoupon2()) // aqui me esta retornando el valor del descuento que tiene el cupon correcto
+  if (!inputHasAValue2(price2, coupon2)) {
   }
+  extractDiscountCoupon2()
+  if (extractDiscount2 === "") {
+    paragraph2.innerText = "Ese cupón no existe"
+    return false
+  }
+  const discount2 = extractDiscount2
+  calculateTheDiscountedPrice2(price2, discount2)
 }
 
 function calculateTheDiscountedPrice2(price2, discount2) {
-  var discount2 = extractDiscount2
   if (discountIsWithinTheRange(discount2)) {
     const priceWithDiscountApplied = (price2 * (100 - discount2)) / 100
     paragraph2.innerText = "Precio con descuento: " + priceWithDiscountApplied
@@ -95,20 +98,7 @@ function extractDiscountCoupon2() {
       extractDiscount2 = discountCouponsList[key]
     }
   }
-  ifTheCouponExist(extractDiscount2)
 }
-
-function ifTheCouponExist(extractDiscount2) {
-  if (extractDiscount2 === "") {
-    paragraph2.innerText = "Ese cupón no existe"
-    return false
-  }
-  return true
-}
-
-// si no existe mostrar el mensaje de error
-
-// si existe, aplicar el descuento y mostrar el precio con descuento
 
 function inputHasAValue2(price2, coupon2) {
   if (!price2 || !coupon2) {
