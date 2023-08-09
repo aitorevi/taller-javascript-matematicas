@@ -72,6 +72,9 @@ function applyDiscountCoupon() {
   const price2 = inputPrice2.value
   const coupon2 = inputCoupon2.value
   if (!inputHasAValue2(price2, coupon2)) {
+    paragraph2.innerText =
+      "Debes rellenar el precio y el cupón para hacer el cálculo"
+    return
   }
   extractDiscountCoupon2()
   if (extractDiscount2 === "") {
@@ -89,7 +92,6 @@ function calculateTheDiscountedPrice2(price2, discount2) {
   }
 }
 
-// comprobar si existe o no el cupon
 let extractDiscount2 = ""
 function extractDiscountCoupon2() {
   const couponKey = inputCoupon2.value
@@ -102,8 +104,6 @@ function extractDiscountCoupon2() {
 
 function inputHasAValue2(price2, coupon2) {
   if (!price2 || !coupon2) {
-    paragraph2.innerText =
-      "Debes rellenar el precio y el cupón para hacer el cálculo"
     return false
   }
   return true
