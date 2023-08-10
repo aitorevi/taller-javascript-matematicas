@@ -3,9 +3,10 @@ let sumOfValues = 0
 
 console.log(valuesList)
 
-average(valuesList)
+averageForOf(valuesList)
+averageReduce(valuesList)
 
-function average(valuesList) {
+function averageForOf(valuesList) {
   for (value of valuesList) {
     sumOfValues = sumOfValues + value
   }
@@ -13,4 +14,10 @@ function average(valuesList) {
   console.log("promedio con bucle for of: " + average)
 }
 
-// Reto: Hacerlo con algún metodo de JavaScript
+function averageReduce(valuesList) {
+  const sumOfValues = valuesList.reduce((accumulator, currentValue) => (accumulator + currentValue))
+  const quantityOfValues = valuesList.length
+  const average = sumOfValues / quantityOfValues
+
+  console.log("promedio con método reduce: " + average)
+}
