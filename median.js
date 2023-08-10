@@ -1,4 +1,4 @@
-const valuesList = [30, 10, 40, 25]
+const valuesList = [30, 10, 40, 25, 8]
 
 const sortedValuesList = valuesList.sort((a, b) => a - b)
 
@@ -9,7 +9,8 @@ if (isOdd(valuesList)) {
 } else {
   const firstCoreValue = valuesList[valuesList.length / 2 - 1]
   const secondCoreValue = valuesList[valuesList.length / 2]
-  const median = (firstCoreValue + secondCoreValue) / 2
+  const coreValues = [firstCoreValue, secondCoreValue]
+  const median = coreValues.reduce((a, b) => a + b) / 2
   console.log("La mediana es: " + median)
 }
 
