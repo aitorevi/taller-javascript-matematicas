@@ -1,3 +1,5 @@
+// Versión 1.0
+
 const inputPrice = document.querySelector("#price")
 const inputDiscount = document.querySelector("#discount")
 const inputCoupon = document.querySelector("#coupon")
@@ -57,7 +59,7 @@ function extractDiscountCoupon() {
   paragraph.innerText = "Ese cupón no existe"
 }
 
-// Implementación de los cupones aplicando el descuento directamente al precio y mostrando el resultado
+// Versión 2.0, descuento aplicado directamente por medio del cupón
 
 const inputPrice2 = document.querySelector("#price2")
 const inputCoupon2 = document.querySelector("#coupon2")
@@ -104,7 +106,7 @@ function extractDiscountCoupon2() {
 
 function inputHasAValue2(price2, coupon2) {
   if (!price2 || !coupon2) {
-    return false
+    paragraph2.innerText =
+      "Debes rellenar el precio y el cupón para hacer el cálculo"
   }
-  return true
 }
