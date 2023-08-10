@@ -15,7 +15,9 @@ function averageForOf(valuesList) {
 }
 
 function averageReduce(valuesList) {
-  const sumOfValues = valuesList.reduce((accumulator, currentValue) => (accumulator + currentValue))
+  const sumOfValues = valuesList.reduce(
+    (accumulator, currentValue) => accumulator + currentValue
+  )
   const quantityOfValues = valuesList.length
   const average = sumOfValues / quantityOfValues
 
