@@ -5,7 +5,7 @@
 //  ¿Qué necesito?
 
 // un array con valores repetidos
-const valuesList = [30, 30, 30, 20, 20, 12, 1, 12, 3, 1]
+const valuesList = [30, 30, 30, 20, 20, 12, 1, 12, 5, 5, 5, 5, 1, 1, 1, 12, 12]
 
 // recorrer el array, comprobar si el valor existe en un array de objetos, este array de objetos, tiene objetos con el valor y el numero de veces que ha salido ese valor.
 
@@ -20,7 +20,6 @@ function action(valuesList, repetitionsOfValue) {
     if (repetitionsOfValue.length == 0) {
       repetitionsOfValue.push({ valor: value, repeticiones: 1 })
     } else {
-      //
       const contieneElNumero = repetitionsOfValue.findIndex(
         (element) => element.valor == value
       )
@@ -33,15 +32,34 @@ function action(valuesList, repetitionsOfValue) {
     }
   }
   console.log(repetitionsOfValue)
-  maxRepetitions(repetitionsOfValue)
-}
 
-function maxRepetitions(repetitionsOfValue) {
-  let fashion = 0
+  let maxValueRepetition = 0
   for (element of repetitionsOfValue) {
-    if (element.repeticiones > fashion) {
-      fashion = element.valor
+    if (element.repeticiones > maxValueRepetition) {
+      maxValueRepetition = element.repeticiones
     }
   }
-  console.log("La moda es: " + fashion)
+
+  let elementsRepit = []
+  for (element of repetitionsOfValue) {
+    if (element.repeticiones == maxValueRepetition) {
+      elementsRepit.push(element)
+    }
+  }
+
+  elementsRepit.length == 1
+    ? console.log("La moda es: " + elementsRepit[0].valor)
+    : isBimodal(elementsRepit)
 }
+
+function isBimodal(elementsRepit) {
+  let result = "La moda es bimodal y los valores son: "
+  for (element of elementsRepit) {
+    result = result + "(" + element.valor + ") "
+  }
+  console.log(result)
+}
+
+// Tarea: Refactorizar nombres, ver otras opciones de eliminar algún bucle for, intentar eliminar algún condicional if else.
+
+// Reto: Hacerlo con TDD
