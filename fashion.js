@@ -2,11 +2,12 @@
 
 const valuesList = [30, 30, 30, 20, 20, 12, 1, 12, 5, 5, 5, 5, 1, 1, 1, 12, 12]
 
-const repetitionsOfValue = []
+// const repetitionsOfValue = []
 
-action(valuesList, repetitionsOfValue)
+// fashion(valuesList)
 
-function action(valuesList, repetitionsOfValue) {
+function fashion(valuesList) {
+  const repetitionsOfValue = []
   for (value of valuesList) {
     if (repetitionsOfValue.length == 0) {
       repetitionsOfValue.push({ valor: value, repeticiones: 1 })
@@ -24,29 +25,9 @@ function action(valuesList, repetitionsOfValue) {
   }
   console.log(repetitionsOfValue)
 
-  // Hacer un HackMd con esto de abajo, super interesante la solución y muy elegante. Acceder a un array de objetos combinando Math.max con map.
-
-  // Este bucle sustituirlo por Math.Max
-  //   let maxValueRepetition = 0
-  //   for (element of repetitionsOfValue) {
-  //     if (element.repeticiones > maxValueRepetition) {
-  //       maxValueRepetition = element.repeticiones
-  //     }
-  //   }
-
   const maxValueRepetition = Math.max(
     ...repetitionsOfValue.map((element) => element.repeticiones)
   )
-
-  // Hacer un HackMd con esto de abajo
-
-  // Este bucle for sustituirlo por filter
-  //   let elementsRepit = []
-  //   for (element of repetitionsOfValue) {
-  //     if (element.repeticiones == maxValueRepetition) {
-  //       elementsRepit.push(element)
-  //     }
-  //   }
 
   const elementsRepit = repetitionsOfValue.filter(
     (element) => element.repeticiones == maxValueRepetition
