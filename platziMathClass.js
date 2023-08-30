@@ -85,4 +85,29 @@ class PlatziMath {
     }
     console.log(result)
   }
+
+  // Proyección
+  static proyection(currentSalary, medianpercentageSalaryIncrease) {
+    const proyectionSalaryOfPerson =
+      currentSalary + (currentSalary * medianpercentageSalaryIncrease) / 100
+
+    return proyectionSalaryOfPerson
+  }
+
+  static percentageSalaryIncrease(salariesOfPerson) {
+    let oldSalary = 0
+    let percentageSalaryIncrease = 0
+    let percentageSalaryIncreaseList = []
+
+    for (let salary of salariesOfPerson) {
+      if (oldSalary == 0) {
+        oldSalary = salary
+      } else {
+        percentageSalaryIncrease = ((salary - oldSalary) / oldSalary) * 100
+        percentageSalaryIncreaseList.push(percentageSalaryIncrease)
+        oldSalary = salary
+      }
+    }
+    return percentageSalaryIncreaseList
+  }
 }
